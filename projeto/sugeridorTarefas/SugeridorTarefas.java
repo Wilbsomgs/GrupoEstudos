@@ -1,54 +1,39 @@
-/*
-    --- Criar um algoritmo que sugira tarefas com base no tempo disponível do usuário
+import java.util.*;
 
-    1. Solicitar tempo disponível do usuário
-    2. Converter para hora totais
-    3. Selecionar atividades recomendadas
+public class SugeridorTarefas {
 
-    -- Faixas de tempo pré-definidas
-    - 5 minutos: beber água, levantar e alongar, respirar fundo.
-    - 10 minutos: ler um artigo curto, revisar anotações, meditar.
-    - 20 minutos: assistir a uma videoaula, fazer uma caminhada curta.
-    - 45 minutos: estudar um módulo, escrever um texto, resolver exercícios.
-    - Mais de 90 minutos:** projeto pessoal, estudo aprofundado, tarefa doméstica longa.
- */
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+        // Mapa com tempo (minutos) e lista de tarefas
+        HashMap<Integer, List<String>> atividades = new HashMap<>();
+        atividades.put(90, Arrays.asList("Projeto pessoal", "Estudo aprofundado", "Tarefa doméstica longa"));
+        atividades.put(45, Arrays.asList("Estudar um módulo", "Escrever um texto", "Resolver exercícios"));
+        atividades.put(20, Arrays.asList("Assistir a uma videoaula", "Fazer uma caminhada curta"));
+        atividades.put(10, Arrays.asList("Ler um artigo curto", "Revisar anotações", "Meditar"));
+        atividades.put(5, Arrays.asList("Beber água", "Levantar e alongar", "Respirar fundo"));
 
-public class SugeridorTarefas{
+        // Entrada do usuário
+        System.out.print("Quanto tempo você tem disponível (em minutos)? ");
+        int tempoDisponivel = scanner.nextInt();
+        int tempoRestante = tempoDisponivel;
 
+        System.out.println("\nVocê tem " + tempoDisponivel + " minutos. Sugestões:");
 
-    public static void main(String[] args){
-      Scanner scanner = new Scanner(System.in);
-      System.out.println("Tempo disponível: ");
-      String time = scanner.nextLine().toLowerCase();
+        // Organiza as chaves em ordem decrescente
+        List<Integer> tempos = new ArrayList<>(atividades.keySet());
+        Collections.sort(tempos, Collections.reverseOrder());
 
-      Pattern horasPattern = Pattern.compile("(\\d+)\\s*(h|hora|horas)");
-      Pattern minutosPattern = Pattern.compile("(\\d+)//s*(m|min|minuto|minutos)");
+        // Escolhe sugestões
+        for (int tempo : tempos) {
+            if (tempoRestante >= tempo) {
+                String sugestao = atividades.get(tempo).get(0); // Pega a primeira da lista
+                System.out.println("✅ " + sugestao + " (" + tempo + " min)");
+                tempoRestante -= tempo;
+            }
+        }
 
-      Matcher horasMatcher = horasPattern.matcher(time);
-      Matcher minutosMatcher = minutosPattern.matcher(time);
-
-      int totalMinutos = 0;
-      if(horasMatcher.find()){
-          int horas = Integer.parseInt(horasMatcher.group(1));
-          totalMinutos += horas *60;
-      }
-      if (minutosMatcher.find()){
-          int minutos = Integer.parseInt(minutosMatcher.group(1));
-          totalMinutos  += minutos;
-      }
-      if (totalMinutos==0){
-          try {
-              totalMinutos = Integer.parseInt(time.replaceAll("[^0-9]", ""));
-          } catch (NumberFormatException e){
-              System.out.println("Entrada inválida.");
-              return;
-          }
-      }
-
-      System.out.println("Você informou: " + totalMinutos + "minutos disponíveis");
+        System.out.println("⏳ Tempo restante: " + tempoRestante + " min");
+        scanner.close();
     }
 }
