@@ -5,7 +5,7 @@ import java.util.Random;
 public class CacaAoNumero2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Random random = new Random();
+        
         OutrasFuncionalidades numeroMaiorMenor = new OutrasFuncionalidades();
         int secretNumber, userNumber, pontuacao, opcao;
 

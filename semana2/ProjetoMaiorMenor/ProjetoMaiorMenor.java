@@ -1,83 +1,74 @@
 
-/*
-    1. O sistema gera um **número aleatório entre 1 e 100**.
-    2. O usuário deve adivinhar se o **próximo número será maior ou menor**.
-    3. O sistema gera um novo número e compara:
-        - Se acertou → +1 ponto
-        - Se errou → 0 ponto
-    4. O número novo vira o "atual", e o ciclo se repete.
-    5. O jogo continua até o usuário digitar `"sair"`.
-    6. Ao final, o sistema exibe a **pontuação total**.
- */
-
-import java.util.Random;
 import java.util.Scanner;
+import java.util.Random;
 
-public class ProjetoMaiorMenor{
+public class CacaAoNumero2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
-        int pontuacaoTotal = 0;
-        String jogarNovamente;
+        VerificacaoResposta verificacao = new VerificacaoResposta();
+        NumeroAleatorio numeroAleatorio = new NumeroAleatorio();
+        EncerrarPrograma encerrarPrograma = new EncerrarPrograma();
+        Menu menu = new Menu();
 
-        do {
-            int pontuacaoRodada = 0;
+        menu.ExibirMenu();
 
-            System.out.println("-------------- GUESS THE NUMBER -------------");
-            System.out.println("Bem-vindo ao joguinho Guess the Number.");
-            System.out.println("1 - Jogar");
-            System.out.println("2 - Ver pontuação total");
-            System.out.println("3 - Sair");
-            System.out.print("Escolha uma opção: ");
-            int opcao = scanner.nextInt();
 
-            if (opcao == 1) {
-                // Inicia jogo
-                for (int tentativas = 1; tentativas <= 5; tentativas++) {
-                    int numero1 = random.nextInt(100) + 1;
-                    System.out.println("\nRodada " + tentativas);
-                    System.out.println("Número atual: " + numero1);
-                    System.out.print("O próximo número será 'maior' ou 'menor'? ");
-                    String resposta = scanner.next().toLowerCase();
+        int secretNumber, userNumber, points, option;
 
-                    int numero2 = random.nextInt(100) + 1;
-                    System.out.println("Próximo número: " + numero2);
+        int[] palpites = new int[10];
 
-                    if (resposta.equals("maior") && numero2 > numero1) {
-                        System.out.println("Você acertou!");
-                        pontuacaoRodada++;
-                    } else if (resposta.equals("menor") && numero2 < numero1) {
-                        System.out.println("Você acertou!");
-                        pontuacaoRodada++;
-                    } else if (resposta.equals("maior") || resposta.equals("menor")) {
-                        System.out.println("Você errou!");
-                    } else {
-                        System.out.println("Resposta inválida. Tente novamente.");
-                        tentativas--; // não conta essa tentativa
-                    }
-                }
+        String opcaoJogarNovamente;
 
-                pontuacaoTotal += pontuacaoRodada;
-                System.out.println("Pontuação nesta rodada: " + pontuacaoRodada);
-            }
-            else if (opcao == 2) {
-                System.out.println("Pontuação total acumulada: " + pontuacaoTotal);
-            }
-            else if (opcao == 3) {
-                System.out.println("Saindo do jogo...");
+
+
+
+        option = scanner.nextInt();
+
+        switch (option){
+            case 1:
+                System.out.println("Iniciando jogo");
                 break;
-            }
-            else {
-                System.out.println("Opção inválida.");
-            }
+            case 2:
+                System.out.println("Encerrando jogo");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Opção inválida! Tente novamente");
+                break;
+        }
 
-            System.out.print("\nDeseja jogar novamente? (s/n): ");
-            jogarNovamente = scanner.next().toLowerCase();
+        System.out.println("\nVocê VS Máquina\n");
+        System.out.println("O computador irá gerar um número aleatório e você deverá adivinhar qual número foi gerado.\n");
 
-        } while (jogarNovamente.equals("s"));
 
-        System.out.println("Obrigado por jogar! Pontuação final: " + pontuacaoTotal);
-        scanner.close();
+        secretNumber = numeroAleatorio.GerarNumeroAleatorio();
+
+
+        for(int i=1; i< palpites.length; i++){
+            points = 0;
+
+            System.out.println("Qual seu palpite? ");
+            userNumber = scanner.nextInt();
+            scanner.nextLine();
+
+            palpites[i] = userNumber;
+
+            verificacao.Verificador(userNumber,secretNumber);
+
+
+            System.out.println("Você deseja continuar jogando? S/N");
+            opcaoJogarNovamente = scanner.nextLine();
+            opcaoJogarNovamente = opcaoJogarNovamente.toLowerCase();
+
+            encerrarPrograma.EncerrarPrograma(opcaoJogarNovamente);
+        }
+
+        for(int i =0; i< palpites.length; i++){
+            System.out.println("Palpites " +i + palpites[i]);
+        }
+
+        System.out.println("O número secreto foi: " + secretNumber);
     }
 }
