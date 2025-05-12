@@ -14,7 +14,6 @@ public class CacaNumero2 {
 
         menu.ExibirMenu();
 
-
         int secretNumber, userNumber, points, option;
 
         int[] palpites = new int[10];

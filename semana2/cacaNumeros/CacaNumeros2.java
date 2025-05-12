@@ -22,22 +22,10 @@ public class CacaNumeros2 {
         String opcaoJogarNovamente;
 
 
-
-
         option = scanner.nextInt();
 
-        switch (option){
-            case 1:
-                System.out.println("Iniciando jogo");
-                break;
-            case 2:
-                System.out.println("Encerrando jogo");
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Opção inválida! Tente novamente");
-                break;
-        }
+        menu.ComecarJogo(option);
+        
 
         System.out.println("\nVocê VS Máquina\n");
         System.out.println("O computador irá gerar um número aleatório e você deverá adivinhar qual número foi gerado.\n");
