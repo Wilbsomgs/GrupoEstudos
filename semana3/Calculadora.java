@@ -1,10 +1,10 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class Calculadora {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Calculos calcular = new Calculos();
+        RealizarCalculos calcular = new RealizarCalculos();
         String[] allowedOperation = {"+", "-", "*", "/"};
 
         System.out.println("== CALCULADORA BÁSICA ==");
