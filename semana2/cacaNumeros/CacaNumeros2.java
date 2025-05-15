@@ -21,7 +21,6 @@ public class CacaNumeros2 {
 
         String opcaoJogarNovamente;
 
-
         option = scanner.nextInt();
 
         menu.ComecarJogo(option);
