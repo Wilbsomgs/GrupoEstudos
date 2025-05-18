@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Calculadora {
@@ -6,9 +5,12 @@ public class Calculadora {
         Scanner scanner = new Scanner(System.in);
         RealizarCalculos calcular = new RealizarCalculos();
         String[] allowedOperation = {"+", "-", "*", "/"};
+        String jogarNovamente;
 
-        System.out.println("== CALCULADORA BÁSICA ==");
-        System.out.print("""
+
+        do{
+            System.out.println("== CALCULADORA BÁSICA ==");
+            System.out.print("""
                 Digite uma operação!
                 adição          +
                 subtração       -
@@ -16,41 +18,72 @@ public class Calculadora {
                 divisão         /
                 >>>\s""");
 
-        String operation = scanner.nextLine();
-
-        /*if (!operation) {
-            System.out.println("Operação inválida, reinicie o programa");
-            return;
-        }/*/
+            String operation = scanner.nextLine();
 
 
+            checkOperation(operation);
 
-        System.out.print("Digite o primeiro número: ");
-        double firstNumber = scanner.nextDouble();
-        scanner.nextLine();
+            System.out.print("Digite o primeiro número: ");
+            double firstNumber = scanner.nextDouble();
+            scanner.nextLine();
 
-        System.out.print("Digite o primeiro número: ");
-        double secondNumber = scanner.nextDouble();
-        scanner.nextLine();
+            System.out.print("Digite o primeiro número: ");
+            double secondNumber = scanner.nextDouble();
+            scanner.nextLine();
 
-        switch (operation){
-            case "+":
-                double resultSum = calcular.Soma(firstNumber,secondNumber);
-                System.out.println("Resultado: " + firstNumber + " + " + secondNumber + " = " + resultSum);
-                break;
-            case "-":
-                double resultSubstraction = calcular.Subtrair(firstNumber,secondNumber);
-                System.out.println("Resultado: " + firstNumber + " - " + secondNumber + " = " + resultSubstraction);
-                break;
-            case "*":
-                double resultMult = calcular.Multiplicar(firstNumber,secondNumber);
-                System.out.println("Resultado: " + firstNumber + " * " + secondNumber + " = " + resultMult);
-                break;
-            case "/":
-                double resultDiv = calcular.Dividir(firstNumber,secondNumber);
-                System.out.println("Resultado: " + firstNumber + " / " + secondNumber + " = " + resultDiv);
-                break;
+            if(firstNumber == 0 || secondNumber == 0){
+                System.out.println("Digite um número acima de 0");
+            }
+
+            switch (operation){
+                case "+":
+                    double resultSum = calcular.sum(firstNumber,secondNumber);
+                    System.out.println("Resultado: " + firstNumber + " + " + secondNumber + " = " + resultSum);
+                    break;
+                case "-":
+                    double resultSubstraction = calcular.subtract(firstNumber,secondNumber);
+                    System.out.println("Resultado: " + firstNumber + " - " + secondNumber + " = " + resultSubstraction);
+                    break;
+                case "*":
+                    double resultMult = calcular.multiply(firstNumber,secondNumber);
+                    System.out.println("Resultado: " + firstNumber + " * " + secondNumber + " = " + resultMult);
+                    break;
+                case "/":
+                    double resultDiv = calcular.divide(firstNumber,secondNumber);
+
+                    divByZeroError(firstNumber,secondNumber);
+
+                    System.out.println("Resultado: " + firstNumber + " / " + secondNumber + " = " + resultDiv);
+                    break;
+                default:
+                    System.out.println("Selecione uma operação: ");
+            }
+
+            System.out.println("Deseja realizar o cálculo novamente novamente? (s/n)");
+            jogarNovamente = scanner.nextLine().toLowerCase();
+
+        }while(jogarNovamente.equals("s"));
+
+        System.out.println("Você encerrou o programa, obrigado utilizar nossa calculadora.");
+
+    }
+
+    public static void divByZeroError(double firstNumber, double secondNumber){
+        if(firstNumber == 0 || secondNumber == 0 ){
+            System.out.println("Erro: divisão por zero não é permitida. Encerrando.");
+            System.exit(0);
         }
+    }
 
+    public static void checkOperation(String operation){
+        boolean operationBoolean = switch (operation) {
+            case "+", "-", "*", "/" -> true;
+            default -> false;
+        };
+
+        if (!operationBoolean) {
+            System.out.println("Operação inválida, reinicie o programa");
+            System.exit(0);
+        }
     }
 }
