@@ -1,5 +1,5 @@
 import java.util.Arrays;
-public class Main{
+public class EvenNumbers{
     public static void main(String[] args){
         int[] numbers = new int[]{5,3,8,0,11,18};
         String inputs;
