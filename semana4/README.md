@@ -20,3 +20,11 @@ Desenvolver um programa de terminal que:
 - O programa deve rodar inteiramente pelo terminal.
 - Mostrar sempre o estado atual da palavra após cada tentativa.
 - Mostrar o número de tentativas restantes.
+
+  Instruções:
+  - Definir categorias
+  - Definir conjunto de palavras
+  - Criar maneira de sortear valores do array
+  - Solicitar ao usuario a categoria
+  - Preciso converter a qntd de caracteres de uma palavra pra traços
+  - 
