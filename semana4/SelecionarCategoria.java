@@ -1,3 +1,4 @@
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -46,8 +47,9 @@ public class SelecionarCategoria {
     public String converterCharacteres(String palavra){
         int qntCaracteres = palavra.length();
 
-        palavra.replace(char)
-        System.out.println(palavra);
-        return
+        String palavraMascarada = "_".repeat(qntCaracteres);
+        System.out.println( palavraMascarada + qntCaracteres + " letras");
+
+        return palavraMascarada;
     }
 }

@@ -1,5 +1,3 @@
-import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
 
 public class JogoForca {
@@ -12,30 +10,48 @@ public class JogoForca {
 
         String palavraMascarada = selecionarCategoria.converterCharacteres(palavraSorteada);
 
-        String chute;
+
         int tentativas = 6;
 
-        for(int i = 0; i <= tentativas; i++) {
+
+
+        do {
             System.out.println("Digite uma letra: ");
-            chute = scanner.next();
+            char chute = scanner.next().charAt(0);
 
+            if(palavraSorteada.contains(String.valueOf(chute))){
+                System.out.println("Letra correta!");
+                palavraMascarada = verificarCaracteres(palavraSorteada, palavraMascarada, chute);
 
-
-            if(palavraSorteada.contains(chute)){
-
-
-            }else {
+            } else {
                 System.out.println("Letra incorreta");
-                tentativas--;
 
+                System.out.println(palavraMascarada);
                 System.out.println("Tentativas restantes: " + tentativas);
+                tentativas--;
             }
-
-        }
+        } while(tentativas!=0);
 
     }
 
-    public static void verificarCaracteres(String palavra, String caracter){
+    public static String verificarCaracteres(String palavraSorteada, String palavraMascarada, char chute){
+        char[] arrayPalavraSortaeada = palavraSorteada.toCharArray();
+        char[] arrayPalavraMascarada = palavraMascarada.replace(" ", "").toCharArray();
 
+        for (int i = 0; i < arrayPalavraSortaeada.length; i++) {
+            if (arrayPalavraSortaeada[i] == chute) {
+                arrayPalavraMascarada[i] = chute;
+            }
+        }
+
+        StringBuilder novaOculta = new StringBuilder();
+        for (char c : arrayPalavraMascarada) {
+              novaOculta.append(c).append(" ");
+        }
+
+
+        String resultado = novaOculta.toString().trim();
+        System.out.println("Resultado: " + resultado );
+        return resultado;
     }
 }
