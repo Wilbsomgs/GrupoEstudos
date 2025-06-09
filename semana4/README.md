@@ -16,14 +16,14 @@ Desenvolver um programa de terminal que:
 ## 🛠️ Especificações Técnicas
 
 - Tecnologia usada: Java
-- A palavra secreta deverá ser sorteada de uma lista simples de palavras.
+- A palavra secreta deverá ser sorteada de uma lista simples de Palavras.
 - O programa deve rodar inteiramente pelo terminal.
 - Mostrar sempre o estado atual da palavra após cada tentativa.
 - Mostrar o número de tentativas restantes.
 
   Instruções:
   - Definir categorias
-  - Definir conjunto de palavras
+  - Definir conjunto de Palavras
   - Criar maneira de sortear valores do array
   - Solicitar ao usuario a categoria
   - Preciso converter a qntd de caracteres de uma palavra pra traços
