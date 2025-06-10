@@ -1,17 +1,15 @@
 import com.google.gson.Gson;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Menu menu = new Menu();
         menu.menuInical();
 
-
-
+                Reader reader = new InputStreamReader(Objects.requireNonNull(Main.class.getResourceAsStream("/palavrasDicas.json")));
                 Gson gson = new Gson();
-                Palavras palavra = gson.fromJson(new FileReader("C:\\Users\\wills\\Github\\IdeaProjects\\GrupoEstudos\\semana5\\src\\palavrasDicas.json"), Palavras.class);
+                Palavras palavra = gson.fromJson(reader, Palavras.class);
                 System.out.println(palavra);
 
         }
