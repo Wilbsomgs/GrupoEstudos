@@ -18,11 +18,16 @@ public class Menu {
         int opcao = scanner.nextInt();
 
         switch (opcao){
-            case 1: jogar.Exibir();
+            case 1: jogar.jogo();
+                break;
             case 2: ajuda();
+                break;
             case 3: leaderBoard();
+                break;
             case 4: leaveGame();
+                break;
             default: System.out.println("Opção inválida, tente novamente.");
+                break;
         }
     }
 
@@ -85,5 +90,12 @@ public class Menu {
         if(enter.isEmpty()){
             menuInical();
         }
+    }
+    public void newChallenge(){
+        System.out.println("""
+                +-----------------------------+
+                |        NOVO DESAFIO         |
+                +-----------------------------+
+                """);
     }
 }
