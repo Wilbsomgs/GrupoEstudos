@@ -61,7 +61,7 @@ public class Menu {
         scanner.nextLine();
         backToMenu();
     }
-    public void endGame(String dica, String resposta, int pontuacao){
+    public void endGame(String dica, String resposta, String palpite, int pontuacao){
 
         pontuacao=0;
         System.out.println("+-----------------------------+");
@@ -74,6 +74,11 @@ public class Menu {
         System.out.println("Você usou todas as dicas.");
         System.out.println("Pontuação: " + pontuacao);
         System.out.println("Pressione ENTER para voltar para o menu");
+        palpite = scanner.nextLine();
+
+        if(palpite.isEmpty()){
+          menuInical();
+        }
     }
     public void leaveGame(){
 

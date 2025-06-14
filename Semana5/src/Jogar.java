@@ -89,14 +89,11 @@ public class Jogar {
                     }
 
                     if(contagemDicas==11){
-                        menu.endGame(dica,resposta,pontuacao);
-                    }
+                        menu.endGame(dica,resposta,palpite,pontuacao);
 
+                    }
                 }
             } while (!sair);
-
-
-
 
         } catch (IOException e){
             System.out.println("Erro: " + e.getMessage());
