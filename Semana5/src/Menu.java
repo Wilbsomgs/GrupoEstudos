@@ -61,8 +61,19 @@ public class Menu {
         scanner.nextLine();
         backToMenu();
     }
-    public void endGame(){
+    public void endGame(String dica, String resposta, int pontuacao){
 
+        pontuacao=0;
+        System.out.println("+-----------------------------+");
+        System.out.println("|         FIM DE JOGO         |");
+        System.out.println("+-----------------------------+");
+        System.out.println(dica);
+        System.out.println(resposta);
+        System.out.println("💀 Fim de jogo!");
+        System.out.println("Resposta certa: " + resposta);
+        System.out.println("Você usou todas as dicas.");
+        System.out.println("Pontuação: " + pontuacao);
+        System.out.println("Pressione ENTER para voltar para o menu");
     }
     public void leaveGame(){
 
@@ -84,18 +95,11 @@ public class Menu {
 
     }
     public void backToMenu(){
-        System.out.println("Pressione ENTER para voltar");
+        System.out.println("Pressione ENTER para voltar para o menu");
         String enter = scanner.nextLine();
 
         if(enter.isEmpty()){
             menuInical();
         }
-    }
-    public void newChallenge(){
-        System.out.println("""
-                +-----------------------------+
-                |        NOVO DESAFIO         |
-                +-----------------------------+
-                """);
     }
 }
