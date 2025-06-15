@@ -34,7 +34,7 @@ public class Jogar {
             boolean sair = false;
             String resposta = null;
             int totalDicas = 11;
-            int contagemDicas = 0;
+            int contagemDicas = 1;
             int pontuacao = 100;
 
             ArrayList<String> dicasValue = new ArrayList<>();
@@ -46,6 +46,7 @@ public class Jogar {
             resposta = String.valueOf(p2.resposta);
 
             do {
+                long inicio = System.currentTimeMillis();
                 System.out.println("""
                         +-----------------------------+
                         |        NOVO DESAFIO         |
@@ -58,7 +59,7 @@ public class Jogar {
                     System.out.println("Pressione ENTER para mostrar a dica "  +(i +1)+ ".");
 
                     System.out.println("+-----------------------------+");
-                    System.out.println("|           DICA "  + (i + 1) + "            |");
+                    System.out.println("|           DICA "  + contagemDicas + "            |");
                     System.out.println("+-----------------------------+");
 
                     String dica = dicasValue.get(i);
@@ -74,7 +75,19 @@ public class Jogar {
                         System.out.println(resposta);
 
                         System.out.println("Dicas usadas: " + contagemDicas);
+
+                        pontuacao -= (contagemDicas * 10);
+
                         System.out.println("Pontuação: " + pontuacao);
+
+                        long fim = System.currentTimeMillis();
+                        long duracao = inicio - fim;
+                        System.out.println("Antes da divisão");
+                        long tempoUsado = duracao / 60;
+
+                        System.out.println((tempoUsado));
+
+
 
                         menu.backToMenu();
                     } else {
@@ -82,7 +95,7 @@ public class Jogar {
                         System.out.println("Ou digite desistir para sair.");
                         palpite = scanner.nextLine();
 
-                        if(palpite.equals("desistir")){
+                        if(palpite.equals("\"desistir/")){
                             sair = true;
                             menu.menuInical();
                         }
@@ -90,9 +103,9 @@ public class Jogar {
 
                     if(contagemDicas==11){
                         menu.endGame(dica,resposta,palpite,pontuacao);
-
                     }
                 }
+
             } while (!sair);
 
         } catch (IOException e){
@@ -108,5 +121,8 @@ public class Jogar {
 
             return sorteioObjeto[indiceSorteado];
         }
+
+
+
     }
 
