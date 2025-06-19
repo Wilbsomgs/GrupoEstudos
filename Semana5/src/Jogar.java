@@ -1,13 +1,10 @@
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.io.FileNotFoundException;
+import java.lang.reflect.Type;
+import java.util.*;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Map;
-import java.util.Scanner;
 
 public class Jogar {
 
@@ -20,16 +17,33 @@ public class Jogar {
     public void jogo() {
         Menu menu = new Menu();
         Scanner scanner = new Scanner(System.in);
+        Gson gson = new Gson();
+        Type tipoMap = new TypeToken<Map<String,Mapeamento>>() {}.getType();
         try {
-            FileReader reader = new FileReader("C:\\Users\\wills\\Github\\IdeaProjects\\GrupoEstudos\\Semana5\\src\\palavrasDicas.json");
-            Gson gson = new Gson();
-            Map<String, Palavras> mapa = gson.fromJson(reader, new TypeToken<Map<String, Palavras>>() {
-            }.getType());
+
+            Map<String, Mapeamento> mapeamentoDicas = gson.fromJson(new FileReader("C:\\Users\\wills\\Github\\IdeaProjects\\GrupoEstudos\\Semana5\\src\\palavrasDicas.json"), tipoMap);
+            Map<String, Mapeamento> mapeamentoPlacar = gson.fromJson(new FileReader("C:\\Users\\wills\\Github\\IdeaProjects\\GrupoEstudos\\Semana5\\src\\placar.json"), tipoMap);
 
 
             String objetoSorteado = sortearObjeto();
 
-            Palavras p2 = mapa.get(objetoSorteado);
+            ArrayList<String> placar = new ArrayList<>();
+
+            Mapeamento teste = mapeamentoPlacar.get("Will");
+
+            for (Map.Entry<String, String> entry : teste.jogadores.entrySet()) {
+                placar.add(entry.getValue());
+            }
+
+            for (String s : placar) {
+                System.out.println("Placar: " + s);
+            }
+
+
+            Mapeamento p2 = mapeamentoDicas.get(objetoSorteado);
+
+
+            System.out.println("Placar josé" + teste);
 
             boolean sair = false;
             String resposta = null;
@@ -55,11 +69,11 @@ public class Jogar {
 
                 System.out.println("Categoria: " + p2.categoria);
 
-                for(int i = 0; i < totalDicas; i++){
-                    System.out.println("Pressione ENTER para mostrar a dica "  +(i +1)+ ".");
+                for (int i = 0; i < totalDicas; i++) {
+                    System.out.println("Pressione ENTER para mostrar a dica " + (i + 1) + ".");
 
                     System.out.println("+-----------------------------+");
-                    System.out.println("|           DICA "  + contagemDicas + "            |");
+                    System.out.println("|           DICA " + contagemDicas + "            |");
                     System.out.println("+-----------------------------+");
 
                     String dica = dicasValue.get(i);
@@ -70,7 +84,7 @@ public class Jogar {
 
                     contagemDicas++;
 
-                    if(palpite.equals(resposta)){
+                    if (palpite.equals(resposta)) {
                         System.out.println("Correto!");
                         System.out.println(resposta);
 
@@ -88,21 +102,20 @@ public class Jogar {
                         System.out.println((tempoUsado));
 
 
-
                         menu.backToMenu();
                     } else {
                         System.out.println("Resposta incorreta.");
                         System.out.println("Ou digite desistir para sair.");
                         palpite = scanner.nextLine();
 
-                        if(palpite.equals("\"desistir/")){
+                        if (palpite.equals("\"desistir/")) {
                             sair = true;
                             menu.menuInical();
                         }
                     }
 
-                    if(contagemDicas==11){
-                        menu.endGame(dica,resposta,palpite,pontuacao);
+                    if (contagemDicas == 11) {
+                        menu.endGame(dica, resposta, palpite, pontuacao);
                     }
                 }
 
