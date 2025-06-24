@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Nomes</title>
+</head>
+<body>
+  <h2>Adicionar Nome</h2>
+
+  <input type="text" id="nome" placeholder="Digite um nome">
+  <button onclick="adicionarNome()">Adicionar</button>
+  <button onclick="mostrarNomes()">Mostrar Nomes</button>
+
+  <h3>Nomes Salvos:</h3>
+  <p id="listaNomes"></p>
+
+  <script>
+    function adicionarNome() {
+      const input = document.getElementById("nome");
+      const nome = input.value.trim();
+      if (!nome) return alert("Digite um nome!");
+
+      // Pega os nomes existentes (ou inicia vazio)
+      let nomes = localStorage.getItem("nomes") || "";
+
+      // Adiciona o novo nome separado por |
+      nomes = nomes ? nomes + "|" + nome : nome;
+
+      // Salva de volta
+      localStorage.setItem("nomes", nomes);
+      input.value = "";
+      alert("Nome adicionado!");
+    }
+
+    function mostrarNomes() {
+      const lista = document.getElementById("listaNomes");
+      lista.innerHTML = ""; // Limpa antes de mostrar
+
+      const nomes = localStorage.getItem("nomes");
+      if (!nomes) {
+        lista.innerHTML = "<li>Nenhum nome salvo.</li>";
+        return;
+      }
+
+      const nomesArray = nomes.split("|");
+      nomesArray.forEach(nome => {
+        const li = document.createElement("li");
+        li.textContent = nome;
+        lista.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
