@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Duplicar Elemento</title>
+  <style>
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #btnDuplicar {
+      margin-top: 20px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background-color: #eee;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="card" id="modelo">
+      <h3>Atividade 1</h3>
+      <p>Status: nenhum</p>
+    </div>
+
+    <button id="btnDuplicar">Duplicar</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById('btnDuplicar');
+    const modelo = document.getElementById('modelo');
+    const container = document.getElementById('container');
+
+    let contador = 2;
+
+    btn.addEventListener('click', () => {
+      const clone = modelo.cloneNode(true);
+      clone.id = ''; // Remove o ID duplicado
+      clone.querySelector('h3').textContent = 'Atividade ' + contador++;
+      container.insertBefore(clone, btn);
+    });
+  </script>
+</body>
+</html>

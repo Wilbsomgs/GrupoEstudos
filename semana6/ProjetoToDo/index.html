@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Tarefas</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js"></script>
 </head>
 <body>
     <header>
@@ -27,13 +28,19 @@
         </div>
 
        <section class="toDo">
-            <div class="container-toDo">
+            <div class="container-toDo" id="containerMain">
                 <div class="toDoTitle">
                     <div class="linha-Vertical"></div>
                     <h2>Todas</h2>
                 </div>
-                <div class="card">
-                    <h3>Atividade 1</h3>
+                <div class="card" id="modelo">
+                    <div class="container-header-card">
+                        <h3>Atividade 1</h3>
+                        <div class="trash-edit">
+                            <img src="img/lapis.png" alt="Editar" width="30" height="30">
+                            <img src="img/lixeira.png" alt="Lixeira" width="30" height="30">
+                        </div>
+                    </div>
                     <div class="linhaHorizontal"></div>
                     <p>Criado em: 12/21/21</p>
 
@@ -42,18 +49,18 @@
                     </div>
 
                     <div class="button">
-
                         <div id="buttonPendente">
-                            <p>Pendente</p>
+                            <button type="button" class="btn pendente">Pendente</button>
                         </div>
 
                         <div id="buttonConcluido">
-                            <p>Concluído</p>
+                            <button type="button" class="btn concluido">Concluído</button>
                         </div>
                     </div>
                 </div>
+                <button type="button" id="btnDuplicar" class="btn adicionar">Nova Tarefa</button>
             </div>
-
+ 
             <div class="container-toDo P">
                 <div class="toDoTitle">
                     <div class="linha-Vertical yellow"></div>
@@ -67,6 +74,7 @@
                     <h2>Concluidas</h2>
                 </div>
             </div>
+
        </section>
 
     </main>
