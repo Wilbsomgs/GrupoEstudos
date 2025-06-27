@@ -123,3 +123,48 @@ section{
  margin-left: 100px;
  background-color: #83cefc ;
 }
+
+.card-Renomear {
+    display: flex;
+    position: absolute;
+    border: solid 1px ;
+    padding: 20px;
+    width: 300px;
+    height: 200px;
+}
+
+
+.card-Renomear .btn{
+    position: static
+}
+
+.salvar {
+    margin-left: 100px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+input {
+    margin-bottom: 20px;
+}
+
+.card-Header{
+    display:flex;
+}
+
+.img-container {
+    width: 30px;
+    height: 30px;
+}
+
+.img-Renomear {
+  position: absolute;
+  top: 10px;     
+  right: 10px;   
+  width: 24px;  
+  height: 24px;
+}
