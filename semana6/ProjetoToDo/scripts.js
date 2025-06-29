@@ -7,9 +7,32 @@ function sairAdicionarTarefa() {
     document.querySelector('.overlayNovaTarefa').style.display = 'none';
 }
 
-function renomearCard() {
+let cardSelecionado = null;
+
+function renomearCard(botao) {
+    const card = botao.closest('.card');
+    cardSelecionado = card;
+
+    const nomeAtual = card.querySelector('h3').textContent;
+
+    // Atualiza o título do modal
+    const titulo = document.getElementById('tituloRenomear');
+    if (titulo) {
+        titulo.textContent = nomeAtual;
+    }
+
+    // Preenche o input de renomeação
+    const input = document.getElementById('inputRenomear');
+    if (input) {
+        input.value = nomeAtual;
+    }
+
+    // Exibe o modal
     document.querySelector('.overlayRenomear').style.display = 'block';
+
+    input.value = '';
 }
+
 
 function sairRenomearCard() {
     document.querySelector('.overlayRenomear').style.display = 'none';
@@ -17,48 +40,48 @@ function sairRenomearCard() {
 
 
 function adicionarTarefa() {
+
     const input = document.getElementById('inputNovaTarefa');
     const novaTarefa = input.value.trim();
 
     if (!novaTarefa) return alert("Digite uma tarefa!");
 
-
     let atividades = localStorage.getItem("atividades") || "";
-
     atividades = atividades ? atividades + "|" + novaTarefa : novaTarefa;
-
     localStorage.setItem("atividades", atividades);
-    input.value = "";
-    alert("Atividade adicionada!");
 
     const modelo = document.getElementById('modelo');
-    const btn = document.getElementById('salvar');
-    const container = document.getElementById('containerCard');
+    const clone = modelo.cloneNode(true);
 
-    const clone = modelo.cloneNode(true)
-    clone.id = ''; // Remove ID duplicado
+    clone.id = '';
+    clone.dataset.id = Date.now();
+    
+    clone.style.display = 'block'; 
     clone.querySelector('h3').textContent = novaTarefa;
-    container.insertBefore(clone, btn);
+
+    const container = document.querySelector('.container-toDo');
+    const btn = document.getElementById('btnNovaTarefa'); 
+
+    container.insertBefore(clone, btn); 
 
     input.value = '';
-    alert('Atividade adicionada!');
+}
+
+function salvarRenomearCard() {
+    const novoNome = document.getElementById('inputRenomear').value.trim();
+    if (!novoNome) return alert('Digite um novo nome para a tarefa.');
+
+    if (cardSelecionado) {
+        cardSelecionado.querySelector('h3').textContent = novoNome;
+    }
+
+    document.querySelector('.overlayRenomear').style.display = 'none';
 }
 
 
-function mostrarAtividades() {
-      const lista = document.getElementById("listaAtividades");
-      lista.innerHTML = ""; // Limpa antes de mostrar
+function moverDivConcluida() {
+  const divParaMover = document.getElementById('modelo');
+  const destino = document.getElementById('c');
 
-      const atividades = localStorage.getItem("atividades");
-      if (!atividades) {
-        lista.innerHTML = "<li>Nenhuma atividade salva</li>";
-        return;
-      }
-
-      const atividadesArray = atividades.split("|");
-      atividadesArray.forEach(atividade => {
-        const li = document.createElement("li");
-        li.textContent = atividade;
-        lista.appendChild(li);
-    });
+  destino.appendChild(divParaMover);
 }

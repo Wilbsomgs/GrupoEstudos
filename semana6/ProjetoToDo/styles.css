@@ -8,6 +8,7 @@
     border-bottom: solid 1px rgb(40, 39, 40);
 }
 
+
 .container-user{
     margin-top: 20px;
 }
@@ -105,6 +106,15 @@ section{
     cursor: pointer;
   }
 
+.trash-edit button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+
 .pendente {
     left:10px;
     margin-right: 20px;
@@ -121,8 +131,11 @@ section{
 }
 
 .trash-edit {
-    margin-left: 100px
+    display: flex;
+    gap: 10px; /* espaço entre os ícones */
+    align-items: center;
 }
+
 
 .adicionar{
  position: static;
@@ -162,7 +175,6 @@ input {
     margin-bottom: 20px;
 }
 
-
 .card-Header{
     display:flex;
 }
@@ -178,4 +190,20 @@ input {
   right: 10px;   
   width: 24px;  
   height: 24px;
+}
+
+button {
+    border: none;
+    background-color: #F0F2FF;
+}
+
+#modelo {
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+}
+.container-header-card {
+    display: flex;
+    justify-content: space-between; /* separa o título e os ícones */
+    align-items: center; /* alinha verticalmente */
 }

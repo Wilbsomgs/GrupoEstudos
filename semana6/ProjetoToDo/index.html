@@ -37,7 +37,10 @@
                         <div class="container-header-card">
                             <h3>Atividade 1</h3>
                             <div class="trash-edit">
-                                <button type="button"><img onclick="renomearCard()" id="renomear" class="img-container img-Editar" src="img/lapis.png" alt="Editar"></button>
+                                <button type="button" onclick="renomearCard(this)">
+                                    <img class="img-container img-Editar" src="img/lapis.png" alt="Editar">
+                                </button>
+
                                 <img class="img-container img-Remover" src="img/lixeira.png" alt="Lixeira">
                             </div>
                         </div>
@@ -48,15 +51,15 @@
                         </div>
                         <div class="button">
                             <div id="buttonPendente">
-                                <button type="button" onclick="mostrarAtividades()" class="btn pendente">Pendente</button>
+                                <button type="button" class="btn pendente">Pendente</button>
                             </div>
                             <div id="buttonConcluido">
-                                <button type="button" class="btn concluido">Concluído</button>
+                                <button type="button" onclick="moverDivConcluida()" class="btn concluido">Concluído</button>
                             </div>
                         </div>
                     </div>
-                <button onclick="adicionarTarefaCard()" type="button" class="btn adicionar">Nova Tarefa</button>
-            </div>
+                    <button onclick="adicionarTarefaCard()" type="button" class="btn adicionar" id="btnNovaTarefa">Nova Tarefa</button>
+                </div>
  
             <div class="container-toDo P">
                 <div class="toDoTitle">
@@ -65,7 +68,7 @@
                 </div>
             </div>
 
-            <div class="container-toDo">
+            <div class="container-toDo" id="c">
                 <div class="toDoTitle">
                     <div class="linha-Vertical green"></div>
                     <h2>Concluidas</h2>
@@ -76,16 +79,17 @@
                 <div class="card novaTarefa">
                     <div class="card-Header">
                         <h3>Adicionar nova Tarefa</h3>
-                        <img class="img-container img-Renomear" src="img/lapis.png" alt="Editar">
                     </div>
+
                     <div class="input">
                         <label for="renomear">Atividade</label>
-                        <input type="text" id="inputNovaTarefa" placeholder="Nome da atividade">
+                        <input type="text" id="inputNovaTarefa" placeholder="Digite a tarefa">
                         <label for="descricao">Descrição</label>
                         <input type="text" placeholder="Descrição" size="50">
                     </div>
+
                     <div class="btn">
-                        <button type="button" id="salvar" class="btn salvar">Salvar</button>
+                        <button type="button" id="salvar" onclick="adicionarTarefa()" btn salvar>Salvar</button>
                         <button onclick="sairAdicionarTarefa()" type="button" class="btn cancelar">Cancelar</button>
                     </div>
                 </div>
@@ -94,17 +98,17 @@
             <div class="overlayRenomear">
                 <div class="card renomear">
                     <div class="card-Header">
-                        <h3>Atividade 01</h3>
+                        <h3 id="tituloRenomear">Atividade 01</h3>
                         <img class="img-container img-Renomear" src="img/lapis.png" alt="Editar">
                     </div>
                     <div class="input">
                         <label for="renomear">Renomear</label>
-                        <input id="inputNome" class="nome" type="text" placeholder="Digite o nome da atividade">
+                        <input id="inputRenomear" class="nome" type="text" placeholder="Digite o nome da atividade">
                         <label for="descricao">Descrição</label>
                         <input class="descricao" type="text" placeholder="Descrição" size="50">
                     </div>
                     <div class="btn">
-                        <button type="button" class="btn salvar">Salvar</button>
+                        <button type="button" class="btn salvar" onclick="salvarRenomearCard()" id="btnRenomear">Renomear</button>
                         <button onclick="sairRenomearCard()" type="button" class="btn cancelar">Cancelar</button>
                     </div>
                 </div>
@@ -113,7 +117,6 @@
        </section>
 
     </main>
-
     <footer>
 
         <p id="listaAtividades"></p>
