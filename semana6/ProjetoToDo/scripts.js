@@ -79,9 +79,16 @@ function salvarRenomearCard() {
 }
 
 
-function moverDivConcluida() {
-  const divParaMover = document.getElementById('modelo');
-  const destino = document.getElementById('c');
 
-  destino.appendChild(divParaMover);
+function moverCardPendente(botao) {
+    const card  =  botao.closest('.card');
+    const destino = document.getElementById('pendente');
+    destino.appendChild(card);
 }
+
+function moverCardConcluida(botao){
+    const card = botao.closest('.card');
+    const destino = document.getElementById('concluida');
+    destino.appendChild(card);
+}
+

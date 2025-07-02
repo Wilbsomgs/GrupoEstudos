@@ -28,7 +28,7 @@
         </div>
 
        <section class="toDo">
-            <div class="container-toDo">
+                <div class="container-toDo">
                     <div class="toDoTitle">
                         <div class="linha-Vertical"></div>
                         <h2>Todas</h2>
@@ -51,27 +51,31 @@
                         </div>
                         <div class="button">
                             <div id="buttonPendente">
-                                <button type="button" class="btn pendente">Pendente</button>
+                                <button type="button" class="btn pendente" onclick="moverCardPendente(this)">Pendente</button>
                             </div>
                             <div id="buttonConcluido">
-                                <button type="button" onclick="moverDivConcluida()" class="btn concluido">Concluído</button>
+                                <button type="button" onclick="moverCardConcluida(this)" class="btn concluido">Concluído</button>
                             </div>
                         </div>
                     </div>
                     <button onclick="adicionarTarefaCard()" type="button" class="btn adicionar" id="btnNovaTarefa">Nova Tarefa</button>
                 </div>
  
-            <div class="container-toDo P">
+            <div class="container-toDo " id="p">
                 <div class="toDoTitle">
                     <div class="linha-Vertical yellow"></div>
                     <h2>Pendentes</h2>
                 </div>
+                <div id="pendente"></div>
             </div>
 
             <div class="container-toDo" id="c">
                 <div class="toDoTitle">
                     <div class="linha-Vertical green"></div>
                     <h2>Concluidas</h2>
+                </div>
+                <div id="concluida">
+
                 </div>
             </div>
 
@@ -89,8 +93,8 @@
                     </div>
 
                     <div class="btn">
-                        <button type="button" id="salvar" onclick="adicionarTarefa()" btn salvar>Salvar</button>
                         <button onclick="sairAdicionarTarefa()" type="button" class="btn cancelar">Cancelar</button>
+                        <button type="button" class="btn salvar" id="salvar" onclick="adicionarTarefa()" btn salvar>Salvar</button>
                     </div>
                 </div>
             </div>
