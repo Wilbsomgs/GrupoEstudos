@@ -15,20 +15,17 @@ function renomearCard(botao) {
 
     const nomeAtual = card.querySelector('h3').textContent;
 
-    // Atualiza o título do modal
     const titulo = document.getElementById('tituloRenomear');
     if (titulo) {
         titulo.textContent = nomeAtual;
     }
 
-    // Preenche o input de renomeação
     const input = document.getElementById('inputRenomear');
     if (input) {
         input.value = nomeAtual;
     }
 
-    // Exibe o modal
-    document.querySelector('.overlayRenomear').style.display = 'block';
+     document.querySelector('.overlayRenomear').style.display = 'block';
 
     input.value = '';
 }
@@ -90,5 +87,52 @@ function moverCardConcluida(botao){
     const card = botao.closest('.card');
     const destino = document.getElementById('concluida');
     destino.appendChild(card);
+}
+
+
+
+window.onload = function () {
+    carregarAtividadesSalvas();
+};
+
+window.onload = function () {
+    carregarAtividadesSalvas();
+};
+function carregarAtividadesSalvas() {
+    const atividades = localStorage.getItem("atividades");
+    if (!atividades) return;
+
+    const lista = atividades.split("|"); // separa as tarefas
+    const modelo = document.getElementById("modelo");
+    const container = document.querySelector(".container-toDo");
+    const btn = document.getElementById("btnNovaTarefa");
+
+    lista.forEach((tarefa) => {
+        const clone = modelo.cloneNode(true);
+        clone.id = '';
+        clone.dataset.id = Date.now();
+        clone.style.display = "block";
+        clone.querySelector("h3").textContent = tarefa;
+
+        container.insertBefore(clone, btn);
+    });
+}
+
+function removerAtividade(nomeAtividade) {
+    let atividades = localStorage.getItem("atividades");
+    if (!atividades) return;
+
+    let lista = atividades.split("|");
+    lista = lista.filter(nome => nome !== nomeAtividade);
+
+    localStorage.setItem("atividades", lista.join("|"));
+}
+
+function removeCard(botao) {
+    const card = botao.closest('.card');
+    const nome = card.querySelector("h3").textContent;
+
+    removerAtividade(nome); 
+    card.remove();          
 }
 

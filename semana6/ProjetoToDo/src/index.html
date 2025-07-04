@@ -41,7 +41,9 @@
                                     <img class="img-container img-Editar" src="assets/lapis.png" alt="Editar">
                                 </button>
 
-                                <img class="img-container img-Remover" src="assets/lixeira.png" alt="Lixeira">
+                                <button type="button" onclick="removeCard(this)">
+                                    <img class="img-container img-Remover" src="assets/lixeira.png" alt="Lixeira">
+                                </button>
                             </div>
                         </div>
                         <div class="linhaHorizontal"></div>
@@ -111,11 +113,8 @@
                         <label for="descricao">Descrição</label>
                         <input class="descricao" type="text" placeholder="Descrição" size="50">
                     </div>
-                    <div class="btn">
-                        <button onclick="sairRenomearCard()" type="button" class="btn cancelar">Cancelar</button>
-                        <button type="button" class="btn salvar" onclick="salvarRenomearCard()" id="btnRenomear">Renomear</button>
-
-                    </div>
+                    <button onclick="sairRenomearCard()" type="button" class="btn cancelar">Cancelar</button>
+                    <button type="button" class="btn salvar" onclick="salvarRenomearCard()" id="btnRenomear">Renomear</button>
                 </div>
             </div>
 
