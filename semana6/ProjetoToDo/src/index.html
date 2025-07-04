@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciador de Tarefas</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 
 </head>
 <body>
     <header>
        <div class="container-header">
-         <a href="menu.html"><img src="img/menu.png" id="img-menu" alt="Menu" height="40" width="40"></a>
-         <img id="img-profile" src="img/cara.png" alt="Perfil" height="80" width="80">
+         <a href="menu.html"><img src="assets/menu.png" id="img-menu" alt="Menu" height="40" width="40"></a>
+         <img id="img-profile" src="assets/cara.png" alt="Perfil" height="80" width="80">
 
          <div class="container-user">
              <p id="nome">Wilbsom Silva</p>
@@ -38,10 +38,10 @@
                             <h3>Atividade 1</h3>
                             <div class="trash-edit">
                                 <button type="button" onclick="renomearCard(this)">
-                                    <img class="img-container img-Editar" src="img/lapis.png" alt="Editar">
+                                    <img class="img-container img-Editar" src="assets/lapis.png" alt="Editar">
                                 </button>
 
-                                <img class="img-container img-Remover" src="img/lixeira.png" alt="Lixeira">
+                                <img class="img-container img-Remover" src="assets/lixeira.png" alt="Lixeira">
                             </div>
                         </div>
                         <div class="linhaHorizontal"></div>
@@ -103,7 +103,7 @@
                 <div class="card renomear">
                     <div class="card-Header">
                         <h3 id="tituloRenomear">Atividade 01</h3>
-                        <img class="img-container img-Renomear" src="img/lapis.png" alt="Editar">
+                        <img class="img-container img-Renomear" src="assets/lapis.png" alt="Editar">
                     </div>
                     <div class="input">
                         <label for="renomear">Renomear</label>
@@ -112,8 +112,9 @@
                         <input class="descricao" type="text" placeholder="Descrição" size="50">
                     </div>
                     <div class="btn">
-                        <button type="button" class="btn salvar" onclick="salvarRenomearCard()" id="btnRenomear">Renomear</button>
                         <button onclick="sairRenomearCard()" type="button" class="btn cancelar">Cancelar</button>
+                        <button type="button" class="btn salvar" onclick="salvarRenomearCard()" id="btnRenomear">Renomear</button>
+
                     </div>
                 </div>
             </div>
@@ -126,6 +127,6 @@
         <p id="listaAtividades"></p>
 
     </footer>
-    <script src="scripts.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
