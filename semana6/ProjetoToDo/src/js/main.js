@@ -43,23 +43,22 @@ function adicionarTarefa() {
     if (!nomeTarefa) return alert("Digite uma tarefa!");
 
     let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+    
+    const dataCriacao = new Date().toLocaleString();
 
-    tarefas.push({ nome: nomeTarefa, descricao: descricaoTarefa });
+    tarefas.push({ nome: nomeTarefa, descricao: descricaoTarefa, dataCriacao: dataCriacao});
+
+    document.getElementById('dataAtual').textContent = dataCriacao; 
+
 
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
 
-    adicionarTarefaNoDOM({ nome: nomeTarefa, descricao: descricaoTarefa });
+    adicionarTarefaNoDOM({ nome: nomeTarefa, descricao: descricaoTarefa, dataCriacao});
 
     document.getElementById('inputNovaTarefa').value = '';
     document.getElementById('inputDescricaoTarefa').value = '';
 }
 
-let btnSalvar = document.querySelector('.salvar');
-btnSalvar.addEventListener('click', function(){
-    const agora = new Date();
-    const data = agora.toLocaleString();
-    document.getElementById('dataAtual').innerText = data; 
-});
 
 function adicionarTarefaNoDOM(tarefa) {
     const modelo = document.getElementById('modelo');
@@ -70,6 +69,9 @@ function adicionarTarefaNoDOM(tarefa) {
 
     clone.querySelector('h3').textContent = tarefa.nome;
     clone.querySelector('.descricao').textContent = tarefa.descricao;
+    
+    clone.querySelector('.data').textContent = tarefa.dataCriacao || "Data não disponível";
+
 
     const container = document.querySelector('.container-toDo');
     const btn = document.getElementById('btnNovaTarefa');
@@ -134,10 +136,4 @@ function removeCard(botao) {
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
 
     card.remove();
-}
-
-function registrarData(botao) {
-    const data = document.getElementById('dataAtual');
-    const agora = new Date()
-    data.textContent = agora;
 }
