@@ -49,10 +49,11 @@ section{
     margin-top: 20px;
     background-color: #F0F2FF;
     margin-left: 20px;
-    height:200px;
     margin-bottom: 15px;;
 }
-
+.novaTarefa {
+    height: 200px;
+}
 .main {
     width: 95%;
 }
@@ -85,12 +86,16 @@ section{
 
 
 .status {
+    display: flex;
     border: solid 1px;
     padding: 7px;
     border-radius: 12px;
-    margin-top: 20px;
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
 }
+
 
 .button {
     display: flex;
@@ -218,6 +223,8 @@ button {
     align-items: center; 
 }
 
-img-remover{
-    cursor: ;
+#inputDescricaoTarefa {
+  word-wrap: break-word;       
+  white-space: pre-line;       
+  overflow-wrap: break-word;   
 }

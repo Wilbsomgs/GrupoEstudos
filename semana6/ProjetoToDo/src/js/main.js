@@ -37,32 +37,46 @@ function sairRenomearCard() {
 
 
 function adicionarTarefa() {
+    const nomeTarefa = document.getElementById('inputNovaTarefa').value.trim();
+    const descricaoTarefa = document.getElementById('inputDescricaoTarefa').value.trim();
 
-    const input = document.getElementById('inputNovaTarefa');
-    const novaTarefa = input.value.trim();
+    if (!nomeTarefa) return alert("Digite uma tarefa!");
 
-    if (!novaTarefa) return alert("Digite uma tarefa!");
+    let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
 
-    let atividades = localStorage.getItem("atividades") || "";
-    atividades = atividades ? atividades + "|" + novaTarefa : novaTarefa;
-    localStorage.setItem("atividades", atividades);
+    tarefas.push({ nome: nomeTarefa, descricao: descricaoTarefa });
 
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+
+    adicionarTarefaNoDOM({ nome: nomeTarefa, descricao: descricaoTarefa });
+
+    document.getElementById('inputNovaTarefa').value = '';
+    document.getElementById('inputDescricaoTarefa').value = '';
+}
+
+let btnSalvar = document.querySelector('.salvar');
+btnSalvar.addEventListener('click', function(){
+    const agora = new Date();
+    const data = agora.toLocaleString();
+    document.getElementById('dataAtual').innerText = data; 
+});
+
+function adicionarTarefaNoDOM(tarefa) {
     const modelo = document.getElementById('modelo');
     const clone = modelo.cloneNode(true);
-
     clone.id = '';
     clone.dataset.id = Date.now();
-    
-    clone.style.display = 'block'; 
-    clone.querySelector('h3').textContent = novaTarefa;
+    clone.style.display = 'block';
+
+    clone.querySelector('h3').textContent = tarefa.nome;
+    clone.querySelector('.descricao').textContent = tarefa.descricao;
 
     const container = document.querySelector('.container-toDo');
-    const btn = document.getElementById('btnNovaTarefa'); 
+    const btn = document.getElementById('btnNovaTarefa');
 
-    container.insertBefore(clone, btn); 
-
-    input.value = '';
+    container.insertBefore(clone, btn);
 }
+
 
 function salvarRenomearCard() {
     const novoNome = document.getElementById('inputRenomear').value.trim();
@@ -80,59 +94,50 @@ function salvarRenomearCard() {
 function moverCardPendente(botao) {
     const card  =  botao.closest('.card');
     const destino = document.getElementById('pendente');
+    const status = card.querySelector('.statusAtual');
+    status.textContent = 'Pendente';
     destino.appendChild(card);
+
 }
 
 function moverCardConcluida(botao){
     const card = botao.closest('.card');
     const destino = document.getElementById('concluida');
+    const status = card.querySelector('.statusAtual');
+    status.textContent = 'Concluído';
     destino.appendChild(card);
 }
 
 
 
-window.onload = function () {
-    carregarAtividadesSalvas();
-};
-
-window.onload = function () {
-    carregarAtividadesSalvas();
-};
 function carregarAtividadesSalvas() {
-    const atividades = localStorage.getItem("atividades");
-    if (!atividades) return;
+    const tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    if (!tarefas || !Array.isArray(tarefas)) return;
 
-    const lista = atividades.split("|"); // separa as tarefas
-    const modelo = document.getElementById("modelo");
-    const container = document.querySelector(".container-toDo");
-    const btn = document.getElementById("btnNovaTarefa");
-
-    lista.forEach((tarefa) => {
-        const clone = modelo.cloneNode(true);
-        clone.id = '';
-        clone.dataset.id = Date.now();
-        clone.style.display = "block";
-        clone.querySelector("h3").textContent = tarefa;
-
-        container.insertBefore(clone, btn);
+    tarefas.forEach((tarefa) => {
+        adicionarTarefaNoDOM(tarefa);
     });
 }
 
-function removerAtividade(nomeAtividade) {
-    let atividades = localStorage.getItem("atividades");
-    if (!atividades) return;
+window.onload = function () {
+    carregarAtividadesSalvas();
+};
 
-    let lista = atividades.split("|");
-    lista = lista.filter(nome => nome !== nomeAtividade);
 
-    localStorage.setItem("atividades", lista.join("|"));
-}
 
 function removeCard(botao) {
     const card = botao.closest('.card');
     const nome = card.querySelector("h3").textContent;
 
-    removerAtividade(nome); 
-    card.remove();          
+    let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+    tarefas = tarefas.filter(t => t.nome !== nome);
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+
+    card.remove();
 }
 
+function registrarData(botao) {
+    const data = document.getElementById('dataAtual');
+    const agora = new Date()
+    data.textContent = agora;
+}
