@@ -15,19 +15,28 @@ function renomearCard(botao) {
 
     const nomeAtual = card.querySelector('h3').textContent;
 
+
     const titulo = document.getElementById('tituloRenomear');
     if (titulo) {
         titulo.textContent = nomeAtual;
     }
 
-    const input = document.getElementById('inputRenomear');
-    if (input) {
-        input.value = nomeAtual;
+    const inputNome = document.getElementById('inputRenomear');
+    if (inputNome) {
+        inputNome.value = nomeAtual;
     }
 
-     document.querySelector('.overlayRenomear').style.display = 'block';
+    const descricaoAtual = card.querySelector('.descricao')
 
-    input.value = '';
+    const inputDescricao = document.getElementById('inputNovaDescricao');
+    if(inputDescricao){
+        inputDescricao.value = descricaoAtual;
+    }
+
+    document.querySelector('.overlayRenomear').style.display = 'block';
+
+    inputNome.value = '';
+    inputDescricao.value = '';
 }
 
 
@@ -69,7 +78,7 @@ function adicionarTarefaNoDOM(tarefa) {
 
     clone.querySelector('h3').textContent = tarefa.nome;
     clone.querySelector('.descricao').textContent = tarefa.descricao;
-    
+
     clone.querySelector('.data').textContent = tarefa.dataCriacao || "Data não disponível";
 
 
@@ -82,10 +91,13 @@ function adicionarTarefaNoDOM(tarefa) {
 
 function salvarRenomearCard() {
     const novoNome = document.getElementById('inputRenomear').value.trim();
+    const novaDescricao = document.getElementById('inputNovaDescricao').value.trim();
+
     if (!novoNome) return alert('Digite um novo nome para a tarefa.');
 
     if (cardSelecionado) {
         cardSelecionado.querySelector('h3').textContent = novoNome;
+        cardSelecionado.querySelector('.descricao').textContent = novaDescricao;
     }
 
     document.querySelector('.overlayRenomear').style.display = 'none';
