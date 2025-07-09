@@ -228,3 +228,15 @@ button {
   white-space: pre-line;       
   overflow-wrap: break-word;   
 }
+
+
+/* Botão menu */
+#botaoMenu {
+    cursor: pointer;
+    background-color: white;
+}
+
+/* Menu */
+#menu {
+    background-color: #83cefc;
+}

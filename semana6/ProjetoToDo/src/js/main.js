@@ -149,3 +149,17 @@ function removeCard(botao) {
 
     card.remove();
 }
+
+// Menu 
+let ativo = false; // flag para alternar
+
+document.getElementById('botaoMenu').addEventListener('click', () =>{
+const menu = document.getElementById('menu');
+
+if (!ativo) {
+    menu.style.display = 'block';
+} else {
+    menu.style.display = 'none';
+}
+ativo = !ativo;
+});
