@@ -30,7 +30,7 @@ h3 {
     font-weight: 100;
 }
 
-section{
+.toDo{
     display: flex;
     justify-content: center;
     margin-top:20px;
@@ -236,7 +236,38 @@ button {
     background-color: white;
 }
 
+
+.sectionMenu img {
+    margin: 0 auto;
+}
+
 /* Menu */
 #menu {
     background-color: #83cefc;
+    width: 15%;
+    padding: 20px;
+    height: 100vh;
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    display: none;
 }
+
+.sectionMenu {
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#voltar {
+    border: none;
+    background-color: #83cefc;
+    margin-top: 10%;
+    cursor: pointer;
+}
+

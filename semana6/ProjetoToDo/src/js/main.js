@@ -150,16 +150,21 @@ function removeCard(botao) {
     card.remove();
 }
 
-// Menu 
-let ativo = false; // flag para alternar
 
-document.getElementById('botaoMenu').addEventListener('click', () =>{
 const menu = document.getElementById('menu');
+const headerPage = document.getElementById('header')
 
-if (!ativo) {
+// Exibir menu e ocultar header 
+const botaoMenu = document.getElementById('botaoMenu').addEventListener('click', ()=>{
     menu.style.display = 'block';
-} else {
-    menu.style.display = 'none';
-}
-ativo = !ativo;
+    document.querySelector('*').style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+    headerPage.style.display = 'none';
 });
+// Oculta menu e exibe header
+const voltar  = document.getElementById('voltar').addEventListener('click', ()=>{
+    menu.style.display = 'none';
+    headerPage.style.display = 'flex';
+});
+
+
+// Oculta header 

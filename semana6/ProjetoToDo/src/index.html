@@ -9,14 +9,14 @@
 </head>
 <body>
     <header>
-       <div class="container-header">
+       <div class="container-header" id="header">
          <button type="button" id="botaoMenu" ><img src="assets/menu.png" id="img-menu" alt="Menu" height="40" width="40"></button>
          <img id="img-profile" src="assets/cara.png" alt="Perfil" height="80" width="80">
 
          <div class="container-user">
-             <p id="nome">Wilbsom Silva</p>
-             <p id="nomeUsuario">@will_silva</p>
-         </div>
+            <p id="nome">Wilbsom Silva</p>
+            <p id="nomeUsuario">@will_silva</p>
+        </div>
 
        </div>
 
@@ -118,17 +118,17 @@
                     <button type="button" class="btn salvar" onclick="salvarRenomearCard()" id="btnRenomear">Renomear</button>
                 </div>
             </div>
-
        </section>
-
     </main>
-
     <section id="menu">
-        <img src="assets/cara.png" alt="Perfil" height="100" width="100">
-        <a href="#">Editar perfil</a>
-        <a href="#">Configurações</a>
-        <button type="button" id="sair">Sair</button>
+        <div  class="sectionMenu">
+            <img src="assets/cara.png" alt="Perfil" id="perfil" height="100" width="100">
+            <a href="#" id="editar-Perfil">Editar perfil</a>
+            <a href="#" id="configuracoes">Configurações</a>
+            <button type="button" id="voltar">Voltar</button>
+        </div>
     </section>
+
     <footer>
 
         <p id="listaAtividades"></p>
