@@ -98,6 +98,3 @@ Este projeto está sob a licença MIT. Sinta-se livre para usar, modificar e dis
 ```
 
 ---
-
-Se quiser, posso gerar esse `README.md` direto em arquivo para você baixar. Deseja?
-```
