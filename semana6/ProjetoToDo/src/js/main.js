@@ -163,8 +163,9 @@ const botaoMenu = document.getElementById('botaoMenu').addEventListener('click',
 // Oculta menu e exibe header
 const voltar  = document.getElementById('voltar').addEventListener('click', ()=>{
     menu.style.display = 'none';
+    document.querySelector('*').style.backgroundColor = 'white';
     headerPage.style.display = 'flex';
 });
 
 
-// Oculta header 
+ 
