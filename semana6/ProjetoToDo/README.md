@@ -1,6 +1,3 @@
-Claro, Wilbsom! Abaixo está um modelo de `README.md` para o seu projeto **Gerenciador de Tarefas**. Ele inclui: descrição, funcionalidades, como rodar, tecnologias usadas, e melhorias futuras.
-
----
 
 ````markdown
 # 📝 Gerenciador de Tarefas
