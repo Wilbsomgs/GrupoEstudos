@@ -10,8 +10,10 @@
 <body>
     <header>
        <div class="container-header" id="header">
-         <button type="button" id="botaoMenu" ><img src="assets/menu.png" id="img-menu" alt="Menu" height="40" width="40"></button>
-         <img id="img-profile" src="assets/cara.png" alt="Perfil" height="80" width="80">
+         <div id="header-Ocultar">
+             <button type="button" id="botaoMenu" ><img src="assets/menu.png" id="img-menu" alt="Menu" height="40" width="40"></button>
+             <img id="img-profile" src="assets/cara.png" alt="Perfil" height="80" width="80">
+         </div>
 
          <div class="container-user">
             <p id="nome">Wilbsom Silva</p>
@@ -28,43 +30,15 @@
         </div>
 
        <section class="toDo">
-                <div class="container-toDo">
+                <div class="container-toDo" id="todas">
                     <div class="toDoTitle">
                         <div class="linha-Vertical"></div>
                         <h2>Todas</h2>
                     </div>
-                    <div class="card main" id="modelo">
-                        <div class="container-header-card">
-                            <h3>Atividade 1</h3>
-                            <div class="trash-edit">
-                                <button type="button" onclick="renomearCard(this)">
-                                    <img class="img-container img-Editar" src="assets/lapis.png" alt="Editar">
-                                </button>
-                                <button type="button" onclick="removeCard(this)">
-                                    <img class="img-container img-Remover" src="assets/lixeira.png" alt="Lixeira">
-                                </button>
-                            </div>
-                        </div>
-                        <div class="linhaHorizontal"></div>
-                        <p>Criado em: <span id="dataAtual" class="data"></span></p>
-                        <p class="descricao">Descrição da tarefa</p>
-                        <div class="status">
-                            <p>Status:</p>
-                            <span class="statusAtual">status</span>
-                        </div>
-                        <div class="button">
-                            <div id="buttonPendente">
-                                <button type="button" class="btn pendente" onclick="moverCardPendente(this)">Pendente</button>
-                            </div>
-                            <div id="buttonConcluido">
-                                <button type="button" onclick="moverCardConcluida(this)" class="btn concluido">Concluído</button>
-                            </div>
-                        </div>
-                    </div>
                     <button onclick="adicionarTarefaCard()" type="button" class="btn adicionar" id="btnNovaTarefa">Nova Tarefa</button>
                 </div>
 
-            <div class="container-toDo " id="p">
+            <div class="container-toDo ">
                 <div class="toDoTitle">
                     <div class="linha-Vertical yellow"></div>
                     <h2>Pendentes</h2>
@@ -72,12 +46,12 @@
                 <div id="pendente"></div>
             </div>
 
-            <div class="container-toDo" id="c">
+            <div class="container-toDo">
                 <div class="toDoTitle">
                     <div class="linha-Vertical green"></div>
                     <h2>Concluidas</h2>
                 </div>
-                <div id="concluida">
+                <div id="concluido">
 
                 </div>
             </div>
@@ -128,6 +102,35 @@
             <button type="button" id="voltar">Voltar</button>
         </div>
     </section>
+
+    <div class="card main" id="modelo">
+                        <div class="container-header-card">
+                            <h3>Atividade 1</h3>
+                            <div class="trash-edit">
+                                <button type="button" onclick="renomearCard(this)">
+                                    <img class="img-container img-Editar" src="assets/lapis.png" alt="Editar">
+                                </button>
+                                <button type="button" onclick="removeCard(this)">
+                                    <img class="img-container img-Remover" src="assets/lixeira.png" alt="Lixeira">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="linhaHorizontal"></div>
+                        <p>Criado em: <span id="dataAtual" class="data"></span></p>
+                        <p class="descricao">Descrição da tarefa</p>
+                        <div class="status">
+                            <p>Status:</p>
+                            <span class="statusAtual">status</span>
+                        </div>
+                        <div class="button">
+                            <div id="buttonPendente">
+                                <button type="button" class="btn pendente" onclick="mudarStatus(this.closest('.card').dataset.id,'pendente')">Pendente</button>
+                            </div>
+                            <div id="buttonConcluido">
+                                <button type="button" onclick="mudarStatus(this.closest('.card').dataset.id,'concluido')" class="btn concluido">Concluído</button>
+                            </div>
+                        </div>
+                    </div>
 
     <footer>
 
