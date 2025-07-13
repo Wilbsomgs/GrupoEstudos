@@ -1,6 +1,3 @@
-Claro, Wilbsom! Abaixo está um modelo de `README.md` para o seu projeto **Gerenciador de Tarefas**. Ele inclui: descrição, funcionalidades, como rodar, tecnologias usadas, e melhorias futuras.
-
----
 
 ````markdown
 # 📝 Gerenciador de Tarefas
@@ -101,6 +98,3 @@ Este projeto está sob a licença MIT. Sinta-se livre para usar, modificar e dis
 ```
 
 ---
-
-Se quiser, posso gerar esse `README.md` direto em arquivo para você baixar. Deseja?
-```
