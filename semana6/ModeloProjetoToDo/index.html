@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciador de Tarefas</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="perfil">
+      <img src="assets/cara.png" alt="Avatar">
+      <div>
+        <h2>Wilbsom Silva</h2>
+        <small>@will_silva</small>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1>Gerenciador de tarefas</h1>
+    <p>Seu gerenciador de tarefas simples, fácil e rápido.</p>
+    <button type="button" class="btn-nova-tarefa">+ Nova Tarefa</button>
+  </div>
+
+  <div class="task-columns">
+    <div class="column">
+      <h2>Todas</h2>
+    </div>
+
+    <div class="column">
+      <h2>Pendentes</h2>
+      <div class="task-card">
+        <h3>Jogar os lixos</h3>
+        <p>Criado em: 13/07/2025, 18:05</p>
+        <span class="status-badge">Pendente</span>
+        <div class="actions">
+          <button type="button" class="btn btn-pendente">Pendente</button>
+          <button type="button" class="btn btn-concluido">Concluído</button>
+          <button type="button" class="btn btn-edit">Editar</button>
+          <button type="button" class="btn btn-delete">Excluir</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <h2>Concluídas</h2>
+    </div>
+  </div>
+</body>
+</html>
